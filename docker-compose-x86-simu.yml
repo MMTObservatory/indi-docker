@@ -1,0 +1,14 @@
+version: '2'
+services:
+  indiserver:
+    image: seanhoughton/indiserver:1.3.1    # x86
+    command: indi_simulator_telescope indi_simulator_ccd
+    restart: always
+    privileged: true
+    volumes:
+      - config:/root/.indi
+    ports:
+      - 7624:7624
+
+volumes:
+  config:
