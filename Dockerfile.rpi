@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:latest
+FROM armv7/armhf-ubuntu:latest
 MAINTAINER T. E. Pickering <te.pickering@gmail.com>
 
 RUN apt-get update && apt-get install -y software-properties-common
