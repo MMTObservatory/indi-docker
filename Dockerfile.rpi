@@ -2,7 +2,18 @@ FROM armv7/armhf-ubuntu:16.04
 MAINTAINER T. E. Pickering <te.pickering@gmail.com>
 
 RUN apt-get update && apt-get install -y software-properties-common
-RUN apt-add-repository ppa:mutlaqja/ppa && apt-get update && apt-get install -y indi-full gsc
+RUN apt-add-repository ppa:mutlaqja/ppa && apt-get update && apt-get install -y \
+indi-bin \
+libindi1 \
+indi-altair \
+indi-asi \
+indi-atik \
+indi-duino \
+indi-fli \
+indi-qhy \
+indi-sbig \
+indi-sx \
+indi-webcam
 
 EXPOSE 7624
 ENTRYPOINT ["indiserver", "-v"]
