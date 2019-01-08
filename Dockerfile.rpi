@@ -1,32 +1,9 @@
-FROM resin/rpi-raspbian:jessie-20161216
-MAINTAINER Sean Houghton "sean.houghton@gmail.com"
+FROM arm64v8/ubuntu:latest
+MAINTAINER T. E. Pickering <te.pickering@gmail.com>
 
-ARG INDI_VERSION=\*
-
-RUN apt-get update && apt-get install -y \
-		cdbs \
-		dkms \
-		fxload \
-		libboost-regex-dev \
-		libcfitsio3-dev \
-		libcurl4-gnutls-dev \
-		libdc1394-22-dev \
-		libftdi-dev \
-		libgphoto2-dev \
-		libgps-dev \
-		libgsl0-dev \
-		libjpeg-dev \
-		libkrb5-dev \
-		libnova-dev \
-		libraw-dev \
-		libtiff5-dev \
-		libusb-1.0-0-dev \
-		libusb-dev
-
-COPY ./libindi-rpi.tgz /tmp/libindi.tgz
-RUN cd /tmp && tar xvfz libindi.tgz
-RUN cd /tmp/libindi_${INDI_VERSION}_rpi && dpkg -i *.deb && rm -rf /tmp/libindi_${INDI_VERSION}_rpi && rm /tmp/libindi.tgz
+RUN apt-get update && apt-get install -y software-properties-common
+RUN apt-add-repository ppa:mutlaqja/ppa && apt-get update && apt-get install -y indi-full gsc
 
 EXPOSE 7624
-ENTRYPOINT ["/usr/bin/indiserver", "-v"]
-CMD ["indi_watchdog", "indi_simulator_ccd", "indi_simulator_dome", "indi_simulator_telescope"]
+ENTRYPOINT ["indiserver", "-v"]
+CMD ["indi_simulator_ccd", "indi_simulator_telescope", "indi_sbig_ccd", "indi_qhy_ccd"]

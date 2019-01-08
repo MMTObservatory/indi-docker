@@ -1,8 +1,9 @@
 version: '2'
 services:
   indiserver:
-    image: seanhoughton/indiserver:1.3.1    # x86
-    command: indi_simulator_telescope indi_simulator_ccd
+    build:
+      context: .
+      dockerfile: Dockerfile.x86
     restart: always
     privileged: true
     volumes:
