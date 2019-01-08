@@ -12,8 +12,7 @@ indi-duino \
 indi-fli \
 indi-qhy \
 indi-sbig \
-indi-sx \
-indi-webcam
+indi-sx
 
 EXPOSE 7624
 ENTRYPOINT ["indiserver", "-v"]
