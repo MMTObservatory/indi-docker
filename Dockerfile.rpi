@@ -1,4 +1,4 @@
-FROM armv7/armhf-ubuntu:latest
+FROM armv7/armhf-ubuntu:16.04
 MAINTAINER T. E. Pickering <te.pickering@gmail.com>
 
 RUN apt-get update && apt-get install -y software-properties-common
