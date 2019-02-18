@@ -1,0 +1,9 @@
+FROM ubuntu:latest
+MAINTAINER T. E. Pickering <te.pickering@gmail.com>
+
+RUN apt-get update && apt-get install -y software-properties-common
+RUN apt-add-repository ppa:mutlaqja/ppa && apt-get update && apt-get install -y indi-full gsc
+
+EXPOSE 7624
+ENTRYPOINT ["indiserver", "-v"]
+CMD ["indi_simulator_ccd", "indi_simulator_telescope", "indi_sbig_ccd", "indi_qhy_ccd", "indi_asi_ccd"]

@@ -3,11 +3,13 @@ services:
   indiserver:
     build:
       context: .
-      dockerfile: Dockerfile-sim.x86
+      dockerfile: Dockerfile-all.x86
     restart: always
     privileged: true
     volumes:
       - config:/root/.indi
+      - /dev/bus/usb:/dev/bus/usb
+      - /dev/ttyUSB0:/dev/ttyUSB0
     ports:
       - 7624:7624
 
