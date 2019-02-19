@@ -16,4 +16,4 @@ indi-sx
 
 EXPOSE 7624
 ENTRYPOINT ["indiserver", "-v"]
-CMD ["indi_simulator_ccd", "indi_simulator_telescope", "indi_sbig_ccd", "indi_qhy_ccd", "indi_asi_ccd"]
+CMD ["indi_simulator_ccd", "indi_simulator_telescope", "indi_lx200gps", "indi_sbig_ccd", "indi_qhy_ccd", "indi_asi_ccd"]
